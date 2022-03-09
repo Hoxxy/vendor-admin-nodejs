@@ -1,0 +1,31 @@
+[
+    {
+        "id": 1,
+        "idReadable": "backpacks",
+        "title": "Backpacks"
+    },
+
+    {
+        "id": 2,
+        "idReadable": "weekend",
+        "title": "Weekend Bags"
+    },
+
+    {
+        "id": 3,
+        "idReadable": "briefcases",
+        "title": "Briefcases"
+    },
+
+    {
+        "id": 4,
+        "idReadable": "wallets",
+        "title": "Wallets"
+    },
+
+    {
+        "id": 5,
+        "idReadable": "items",
+        "title": "Items"
+    }
+]

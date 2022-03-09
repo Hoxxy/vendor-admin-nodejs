@@ -1,0 +1,127 @@
+<mat-progress-bar mode="query" *ngIf="showProgress"></mat-progress-bar>
+
+<h1 style="text-align: center; padding:15px;">Orders</h1>
+
+<mat-tab-group mat-align-tabs="center" class="page-container" class="mat-card">
+
+    <mat-tab label="Orders List">
+        <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="2%" class="mat-card">
+            <table mat-table [dataSource]="listedOrders" multiTemplateDataRows>
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef style="text-align:center;"> Order No. </th>
+                <td mat-cell *matCellDef="let element"> #{{element.id}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="displayname">
+                <th mat-header-cell *matHeaderCellDef style="text-align:center;"> Buyer </th>
+                <td mat-cell *matCellDef="let element"> {{element.displayname}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef style="text-align:center;"> Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef style="text-align:center;"> Status </th>
+                <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="total">
+                <th mat-header-cell *matHeaderCellDef style="text-align:center;"> Total </th>
+                <td mat-cell *matCellDef="let element"> € {{element.total.toFixed(2) }} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef style="text-align:center;"></th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button><mat-icon>info</mat-icon></button>
+                </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="expandedDetail">
+                <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length" >
+        
+                <div class="element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'" fxLayout="column" style="padding-left: 30px;line-height:2px;">
+                    <h3>Delivery Info</h3>
+                    <p>{{ element.displayname }}</p>
+                    <p>{{ element.city + " " + element.postcode }}</p>
+                    <p>{{ element.address1 }}</p>
+                    <p>{{ element.phone }}</p>
+                </div>
+
+                <div class="element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'" *ngFor="let product of element.productInfo; let i = index" fxLayout="row">
+                    <div class="product-image">
+                        <img src="./assets/images/product-{{ product.product_id }}.jpg">
+                    </div>
+                    <div fxFlex="30" class="product-name" fxLayoutAlign="start center">{{ product.title }}</div>
+                    <div fxFlex="30" fxLayoutAlign="start center">Qty: {{ element.productQty[i] }}</div>
+                    <div fxFlex="30" fxLayoutAlign="start center">Cost: €{{ (element.productQty[i] * product.price).toFixed(2) }}</div>
+                    <div fxFlex="30" fxLayoutAlign="start center"><button mat-icon-button (click)="deleteOrderProduct(element.id, product.id)"><mat-icon>clear</mat-icon></button></div>
+                </div>
+
+                <div class="element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                    <button mat-flat-button color="primary" (click)="addProductToOrder(element.id)" style="margin: 10px;">Add Product</button>
+                    <button mat-flat-button color="warn" (click)="deleteOrder(element.id)" style="margin: 10px;">Delete Order</button>
+                </div>
+
+                
+                </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="element-row"
+                [class.expanded-row]="expandedElement === element"
+                (click)="expandedElement = expandedElement === element ? null : element">
+            </tr>
+            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+        </table>
+
+            <section fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="6%" fxFlex>
+                <mat-paginator [pageSize]="1" [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+                <section fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+                    <button mat-flat-button color="primary" (click)="listOrders()">List Orders</button>
+                </section>
+            </section>
+        </div>
+    </mat-tab>
+
+
+    
+    <mat-tab label="Create New Order">
+        <div fxLayout="column" class="mat-card" style="width:900px; margin:auto;">
+            <form #form="ngForm" (ngSubmit)="createNewOrder(form)">
+        
+
+                <div fxLayout="row" fxLayout.lt-md="column" fxFlexFill>
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>User ID</mat-label>
+                        <input type="number" ngModel matInput name="userid" #useridInput="ngModel" required/>
+                        <mat-error *ngIf="useridInput.hasError('required')">This is a required field.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row" fxLayout.lt-md="column" fxFlexFill>
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>Date</mat-label>
+                        <input type="text" ngModel matInput name="date" #dateInput="ngModel" required/>
+                        <mat-error *ngIf="dateInput.hasError('required')">This is a required field.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row" fxLayout.lt-md="column" fxFlexFill>
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>Status</mat-label>
+                        <input type="text" ngModel matInput name="status" #statusInput="ngModel" required/>
+                        <mat-error *ngIf="statusInput.hasError('required')">This is a required field.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row" fxLayoutGap="20px" style="padding-top:10px;">
+                    <button type="submit" mat-raised-button color="primary" fxFlex="100" [disabled]="!checkFormValidity(form)">Create Order</button>
+                </div>
+
+            </form>
+        </div>
+    </mat-tab>
+</mat-tab-group>

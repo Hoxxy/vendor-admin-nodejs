@@ -1,0 +1,49 @@
+table {
+    width:100%;
+    max-width:800px;
+    margin: 2em auto;
+  }
+
+.page-container {
+  max-width: 1140px;
+  text-align: center;
+  padding: 30px 30px;
+  margin: auto;
+}
+
+.page-container h1 {
+    font-family: 'Roboto', sans-serif;
+}
+
+tr.detail-row {
+  height: 0;
+}
+
+tr.element-row:not(.expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.element-row:not(.expanded-row):active {
+  background: #efefef;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+
+.element-detail {
+  overflow: hidden;
+  display: flex;
+  padding-left: 30px;
+  background-color: whitesmoke;
+}
+
+.product-image img {
+  padding: 10px;
+    max-width: 45px;
+    max-height: 45px;
+}
+
+.product-name {
+  padding: 0 10px;
+}

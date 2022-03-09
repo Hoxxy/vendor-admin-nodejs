@@ -1,0 +1,35 @@
+<div class="page">
+    <div class="container">
+        <h1>Shop</h1>
+        <div class="spacer"></div>
+
+        <button mat-button [matMenuTriggerFor]="menuCategory">Category</button>
+        <mat-menu #menuCategory="matMenu" yPosition="below">
+            <button mat-menu-item routerLink="/shop">All</button>
+            <span *ngFor="let category of categoryList; let i = index">
+                <button mat-menu-item routerLink="/shop" [queryParams]="{category: category.id}">{{ category.title }}</button>
+            </span>
+        </mat-menu>
+
+        <button mat-button [matMenuTriggerFor]="menuPrice">Price Range</button>
+        <mat-menu #menuPrice="matMenu" yPosition="below">
+            <button mat-menu-item routerLink="/shop" [queryParams]="{price: 'cheap'}">Cheap</button>
+            <button mat-menu-item routerLink="/shop" [queryParams]="{price: 'premium'}">Premium</button>
+        </mat-menu>
+
+        <div fxLayout="row wrap" fxLayout.lt-md="column" style="width:100%;margin:auto;padding-top:20px;">
+            <div fxFlex="33" *ngFor="let product of productList; let i = index">
+                <div class="image-container">
+                    <div class="product-image" [ngStyle]="{'background-image': 'url(./assets/images/product-' + product.id + '.jpg)'}"></div>
+                    <div class="overlay">
+                        <button mat-flat-button [routerLink]="['/product',i+1]">View Details</button>
+                        <div matTooltip="This product is currently out of stock" [matTooltipDisabled]="product.stock>0">
+                            <button mat-flat-button [disabled]="!product.stock">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <p>{{product.title}}</p>
+            </div>
+        </div>
+    </div>
+</div>

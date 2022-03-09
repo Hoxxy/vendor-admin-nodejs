@@ -1,0 +1,298 @@
+[
+    {
+        "id":1,
+        "title":"Mountain Hike",
+        "price":299.00,
+        "description":"High-performance mountain backpack. Functionality includes gear loops, cord detailing, compressions straps, large front pocket and smaller pocket in the lid. Expertly crafted from sustainable fabrics, with technical details and function at its core.",
+        "category":1,
+        "stock":true
+    },
+    
+    {
+        "id":2,
+        "title":"Forest Hike",
+        "price":199.00,
+        "description":"Technical rolltop backpack. Expertly crafted from sustainable fabrics, with technical details and function at its core.",
+        "category":1,
+        "stock":true
+    },
+    
+    {
+        "id":3,
+        "title":"Bernt",
+        "price":149.00,
+        "description":"This water-resistant and functional backpack from our Urban Outdoor series is constructed with Cordura® EcoMade polyester and leather patch details. It features a 15\" laptop compartment and can carry up to 20 L. The versatile and practical features along with heritage leather details make this bag a modern classic to be worn everyday or for those weekend hikes.",
+        "category":1,
+        "stock":false
+    },
+    
+    {
+        "id":4,
+        "title":"Tony",
+        "price":99.00,
+        "description":"This minimalistic backpack from our Ground series is produced from an organic cotton and recycled polyester mix, here updated with details in polyester making it 100% vegan. The bag features a 15\" laptop pocket, one outer zipper pocket and can carry up to 13 L. With the top and side handle you can carry the backpack as a tote or a briefcase as well, perfect for the daily commute.",
+        "category":1,
+        "stock":true
+    },
+    
+    {
+        "id":5,
+        "title":"Ruben 2.0",
+        "price":179.00,
+        "description":"This water-resistant and functional rolltop backpack from our Stream series is constructed from recycled polyester with a waterproof TPU coating and can carry up to 21 L. It features a 13\" laptop compartment and is designed with YKK® AquaGuard zippers. The webbing is reflective, keeping you visible at night. Continue exploring with a functional and durable bag that will keep your belongings safe and dry.",
+        "category":1,
+        "stock":true
+    },
+    
+    {
+        "id":6,
+        "title":"Johannes",
+        "price":159.00,
+        "description":"This water-resistant and functional backpack from our Urban Outdoor series is constructed from Cordura® EcoMade polyester with leather patch accents. It features a 13\" laptop compartment, practical cord detailing and can carry up to 15 L. The versatile features combined with heritage details make this bag a modern companion to be worn both in the city and on those weekend hikes.",
+        "category":1,
+        "stock":true
+    },
+    
+    {
+        "id":7,
+        "title":"Erland Lightweight",
+        "price":99.00,
+        "description":"This lightweight and functional backpack with zipper closure from our Lightweight series is made from 100% recycled nylon ripstop. It can be folded and tucked into the inner zipper pocket, making packing that much easier. The versatile and practical features, alongside it being super lightweight and packable makes this bag a classic to be worn everyday.",
+        "category":1,
+        "stock":true
+    },
+    
+    {
+        "id":8,
+        "title":"Baetis",
+        "price":249.00,
+        "description":"This rolltop backpack is made in collaboration with fly fishing collective Podsol. It is constructed from 100% recycled heavy-duty water-resistant polyester with leather patch accents and water resistant PU screen print coating on the bottom. The bag comes with an additional dry bag with shoulder strap and is equipped with rod tube holders on the side, a d-ring for your fishing net and a leather holder for floatant and spool holder. The bag features a 13\" laptop compartment, practical cord detailing and can carry up to 25 L.",
+        "category":1,
+        "stock":true
+    },
+    
+    {
+        "id":9,
+        "title":"Atle",
+        "price":159.00,
+        "description":"This water-resistant backpack from our Stream series is constructed from recycled polyester with a waterproof TPU coating. It features a 13\" laptop compartment, can carry up to 16 L and is designed with YKK® AquaGuard zippers. The webbing is reflective, keeping you visible at night. Continue exploring with a functional and durable bag that will keep your belongings safe and dry.",
+        "category":1,
+        "stock":true
+    },
+    
+    {
+        "id":10,
+        "title":"Zeke",
+        "price":199.00,
+        "description":"This water-resistant and functional backpack from our Aerial series is constructed from recycled polyester. The 13\" laptop compartment, two handles, double main opening options and compression straps are all key for that perfectly packed bag. A vegan backpack where utility and function are in focus.",
+        "category":1,
+        "stock":true
+    },
+    
+    {
+        "id":11,
+        "title":"Christoffer",
+        "price":179.00,
+        "description":"This water-resistant and functional rolltop backpack from our Urban Outdoor series is constructed from Cordura® EcoMade polyester with leather patch accents. It features a 13\" laptop compartment, practical cord detailing and can carry up to 27 L. The versatile features combined with heritage details make this bag a modern companion to be worn both in the city and on those weekend hikes.",
+        "category":1,
+        "stock":true
+    },
+    
+    {
+        "id":12,
+        "title":"Alva",
+        "price":219.00,
+        "description":"This high-quality backpack from our Classics series is made with organic cotton canvas and high-quality leather and can carry up to 11 L. The front roller buckle closure lends an elegant and timeless look. The inner laptop compartment fits most 13\" models. A great backpack for work and leisure, matching both your dressed and casual outfits.",
+        "category":1,
+        "stock":true
+    },
+    
+    {
+        "id":13,
+        "title":"Hege",
+        "price":219.00,
+        "description":"This high-quality, spacious backpack from our Classics series is made with organic cotton canvas and high-quality leather and can carry up to 18 L. The double roller buckle closure on the thick leather lid lends a timeless look. An inner laptop compartment fits most 15\" models. Functionality combined with sophisticated design make this the perfect everyday bag for work as well as leisure.",
+        "category":1,
+        "stock":true
+    },
+    
+    {
+        "id":14,
+        "title":"Milton",
+        "price":149.00,
+        "description":"This water-resistant and spacious weekend bag from our Urban Outdoor series is constructed in Cordura® EcoMade polyester with leather patch details. Can carry up to 30 L and features interior pockets for keeping your passport and wallet within reach. Can be brought as carry on luggage. The durable material allows your bag to stay good looking regardless of how many times you travel with it.",
+        "category":2,
+        "stock":true
+    },
+    
+    {
+        "id":15,
+        "title":"Leopold",
+        "price":179.00,
+        "description":"This water-resistant duffel bag from our Stream series doubles as a backpack. It is constructed from recycled polyester with a waterproof TPU coating and can carry up to 27 L. The bag is designed with YKK® AquaGuard zippers and the webbing is reflective, keeping you visible at night. Continue exploring with a functional and durable bag that will keep your belongings safe and dry.",
+        "category":2,
+        "stock":true
+    },
+    
+    {
+        "id":16,
+        "title":"Hailey",
+        "price":179.00,
+        "description":"This spacious weekend bag from our Fusion series is made with recycled nylon and high-quality leather details. Outer slip pockets with magnetic closure and inner zipper pockets. The bag features two large handles and a removable and adjustable shoulder strap. Lightweight, comfortable and spacious, making it the perfect bag for both the gym as well as for weekend travels.",
+        "category":2,
+        "stock":true
+    },
+    
+    {
+        "id":17,
+        "title":"Astrid",
+        "price":199.00,
+        "description":"This oversized tote bag from our Fusion series is made with recycled nylon and high-quality leather details. One main compartment with a hidden magnet closure, inner and outer zipper pockets. Lightweight, comfortable and elegant, making it the perfect bag to accompany you wherever you go.",
+        "category":2,
+        "stock":true
+    },
+    
+    {
+        "id":18,
+        "title":"Zack New",
+        "price":189.00,
+        "description":"This water-resistant and very spacious 41 L backpack from our Aerial series is constructed from recycled polyester. The 15\" laptop compartment, several handles, hidden outer pockets and compression straps are all key for that perfectly-packed bag. A vegan backpack where utility and function are key.",
+        "category":2,
+        "stock":true
+    },
+    
+    {
+        "id":19,
+        "title":"Dal",
+        "price":159.00,
+        "description":"This water-resistant briefcase from our Stream series is constructed from recycled polyester with a waterproof TPU coating. It features an 13'' laptop compartment, two outer zipper pockets and can carry up to 12 L and is designed with YKK® AquaGuard zippers. Reflective webbing on the side. Continue exploring with a functional and durable bag that will keep your belongings safe and dry.",
+        "category":3,
+        "stock":true
+    },
+    
+    {
+        "id":20,
+        "title":"Emil",
+        "price":129.00,
+        "description":"This sleek briefcase from our Ground series is produced from an organic cotton and recycled polyester mix with smooth leather details. The bag features a 15\" laptop pocket, one large outer zipper pocket and can carry up to 12 L. Functional and with a minimal yet stylish approach to design, this bag is a perfect companion for work and school.",
+        "category":3,
+        "stock":true
+    },
+    
+    {
+        "id":21,
+        "title":"Seth Twill",
+        "price":289.00,
+        "description":"This structured briefcase is crafted from recycled/organic polycotton twill with high-quality leather details for a timeless look and carries up to 10 L. The bag features a 15\" laptop compartment, convenient pockets and an adjustable and removable shoulder strap, making it ideal for the daily commute.",
+        "category":3,
+        "stock":true
+    },
+    
+    {
+        "id":22,
+        "title":"Alice",
+        "price":299.00,
+        "description":"This structured shoulder bag is crafted from full grain aniline-dyed Scandinavian leather with strap detailing on the front for a timeless look and carries up to 6 L. The bag features a 13'' laptop compartment, sleek handles and a leather shoulder strap. A modern classic that will never go out of style.",
+        "category":3,
+        "stock":true
+    },
+    
+    {
+        "id":23,
+        "title":"Jones Metal Hook",
+        "price":279.00,
+        "description":"This multifunctional take on a classic doctor's bag, now updated with metal hook closure, made with organic cotton and high-quality leather. Carries up to 18 L. Featuring adjustable and removable shoulder straps, it can be worn as a backpack, shoulder bag or briefcase. The laptop compartment fits most 15\" models. Functionality combined with sophisticated design make this the perfect everyday bag.",
+        "category":3,
+        "stock":true
+    },
+    
+    {
+        "id":24,
+        "title":"Fred Sunset Pink",
+        "price":39.00,
+        "description":"This card holder is crafted from full grain aniline-dyed Scandinavian leather. It features five card slots. Personalize your style and add some beautiful detail to your look with a high-quality leather card holder that will age beautifully over time.",
+        "category":4,
+        "stock":true
+    },
+    
+    {
+        "id":25,
+        "title":"Fred Black",
+        "price":39.00,
+        "description":"This card holder is crafted from full grain aniline-dyed Scandinavian leather. It features five card slots. Personalize your style and add some beautiful detail to your look with a high-quality leather card holder that will age beautifully over time.",
+        "category":4,
+        "stock":true
+    },
+    
+    {
+        "id":26,
+        "title":"Manfred",
+        "price":69.00,
+        "description":"This exclusive wallet is crafted from full grain aniline-dyed Scandinavian leather. It features six card slots, one bill sleeve and two inner slip pockets. Personalize your style and add some detail to your look with a high-quality leather wallet that will age beautifully over time.",
+        "category":4,
+        "stock":true
+    },
+    
+    {
+        "id":27,
+        "title":"Mona",
+        "price":89.00,
+        "description":"This exclusive wallet is crafted from full grain aniline-dyed Scandinavian leather with zipper closure for a timeless look. It features twelve card slots, two bill pockets and one inner zipper pocket. Personalize your style and add some beautiful detail to your look with a high-quality leather wallet that will age beautifully over time.",
+        "category":4,
+        "stock":true
+    },
+    
+    {
+        "id":28,
+        "title":"Rani",
+        "price":69.00,
+        "description":"This exclusive cart holder is crafted from full grain aniline-dyed Scandinavian leather and lined with 100% organic cotton. It features four card slots and a magnet button closure. Personalize your style and add some beautiful detail to your look with a high-quality leather wallet that will age beautifully over time.",
+        "category":4,
+        "stock":true
+    },
+    
+    {
+        "id":29,
+        "title":"Running Cap",
+        "price":39.00,
+        "description":"",
+        "category":5,
+        "stock":true
+    },
+    
+    {
+        "id":30,
+        "title":"23oz Bottle",
+        "price":39.00,
+        "description":"Insulated bottle in collaboration with MiiR. Made in durable stainless steel, a bottle that will keep your beverage cold for 24+ hours and hot for up to 12 hours. Clip the lid to your backpack and bring our bottle along on the hike.",
+        "category":5,
+        "stock":true
+    },
+    
+    {
+        "id":31,
+        "title":"Camp Cup",
+        "price":29.00,
+        "description":"Insulated camp cup in collaboration with MiiR. Made in durable stainless steel, a cup that will keep your beverage that perfect temperature for longer. Clip the handle to your backpack and bring our camp cup along on the hike.",
+        "category":5,
+        "stock":true
+    },
+    
+    {
+        "id":32,
+        "title":"12oz Travel Tumbler",
+        "price":39.00,
+        "description":"Insulated travel tumbler in collaboration with MiiR. Made in durable stainless steel, a tumbler that will keep your beverage that perfect temperature for longer.",
+        "category":5,
+        "stock":true
+    },
+    
+    {
+        "id":33,
+        "title":"Bucket Hat",
+        "price":39.00,
+        "description":"Bucket hat made with 100% recycled nylon ripstop. The bucket hat has an elastic cord detail with a cord lock and fits most.",
+        "category":5,
+        "stock":true
+    }
+]

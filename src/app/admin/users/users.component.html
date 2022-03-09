@@ -1,0 +1,196 @@
+<mat-progress-bar mode="query" *ngIf="showProgress"></mat-progress-bar>
+<h1 style="text-align: center; padding:15px;">Users</h1>
+<mat-tab-group mat-align-tabs="center">
+
+    <mat-tab label="Users List">
+        <div fxLayout="column" fxLayoutAlign="center center" class="mat-card">
+            <mat-table [dataSource]="listedAccounts" matSort style="width:90%;margin:auto;">
+                
+                <ng-container matColumnDef="firstname">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
+                    <mat-cell *matCellDef="let user">
+                        <span *ngIf="!isEditingField">{{ user.firstname }}</span>
+                        <span *ngIf="isEditingField"><input type="text" matInput [(ngModel)]="user.firstnameEdit" [placeholder]="user.firstname" (keydown.enter)="isEditingField = false; editUser(user)" (keydown.esc)="isEditingField=false"/></span>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="lastname">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
+                    <mat-cell *matCellDef="let user">
+                        <span *ngIf="!isEditingField">{{ user.lastname }}</span>
+                        <span *ngIf="isEditingField"><input type="text" matInput [(ngModel)]="user.lastnameEdit" [placeholder]="user.lastname" (keydown.enter)="isEditingField = false; editUser(user)" (keydown.esc)="isEditingField=false"/></span>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="email">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>E-mail</mat-header-cell>
+                    <mat-cell *matCellDef="let user">
+                        <span *ngIf="!isEditingField">{{ user.email }}</span>
+                        <span *ngIf="isEditingField"><input type="email" matInput [(ngModel)]="user.emailEdit" [placeholder]="user.email" (keydown.enter)="isEditingField = false; editUser(user)" (keydown.esc)="isEditingField=false"/></span>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="password">
+                    <mat-header-cell *matHeaderCellDef>Password</mat-header-cell>
+                    <mat-cell *matCellDef="let user">
+                        <span *ngIf="isEditingField"><input type="password" matInput [(ngModel)]="user.passwordEdit" placeholder="********" (keydown.enter)="isEditingField = false; editUser(user)" (keydown.esc)="isEditingField=false"/></span>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="phone">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Phone</mat-header-cell>
+                    <mat-cell *matCellDef="let user">
+                        <span *ngIf="!isEditingField">{{ user.phone }}</span>
+                        <span *ngIf="isEditingField"><input type="text" matInput [(ngModel)]="user.phoneEdit" [placeholder]="user.phone" (keydown.enter)="isEditingField = false; editUser(user)" (keydown.esc)="isEditingField=false"/></span>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="city">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
+                    <mat-cell *matCellDef="let user">
+                        <span *ngIf="!isEditingField">{{ user.city }}</span>
+                        <span *ngIf="isEditingField"><input type="text" matInput [(ngModel)]="user.cityEdit" [placeholder]="user.city" (keydown.enter)="isEditingField = false; editUser(user)" (keydown.esc)="isEditingField=false"/></span>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="postcode">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Postcode</mat-header-cell>
+                    <mat-cell *matCellDef="let user">
+                        <span *ngIf="!isEditingField">{{ user.postcode }}</span>
+                        <span *ngIf="isEditingField"><input type="text" matInput [(ngModel)]="user.postcodeEdit" [placeholder]="user.postcode" (keydown.enter)="isEditingField = false; editUser(user)" (keydown.esc)="isEditingField=false"/></span>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="address1">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Address</mat-header-cell>
+                    <mat-cell *matCellDef="let user">
+                        <span *ngIf="!isEditingField">{{ user.address1 }}</span>
+                        <span *ngIf="isEditingField"><input type="text" matInput [(ngModel)]="user.address1Edit" [placeholder]="user.address1" (keydown.enter)="isEditingField = false; editUser(user)" (keydown.esc)="isEditingField=false"/></span>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                    <mat-cell *matCellDef="let user">
+                        <button mat-icon-button *ngIf="!isEditingField" (click)="isEditingField = true"><mat-icon>edit</mat-icon></button>
+                        <button mat-icon-button *ngIf="isEditingField" (click)="isEditingField = false; editUser(user)"><mat-icon>check_circle</mat-icon></button>
+                        <button mat-icon-button (click)="deleteUser(user.id, user.firstname + ' ' + user.lastname)"><mat-icon>delete_forever</mat-icon></button>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let rows; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            
+            <section fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px" style="margin-bottom: 30px;">
+                <mat-paginator [pageSize]="1" [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+                <section fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+                    <button mat-flat-button color="primary" (click)="listAll()">List Users</button>
+                    <button mat-stroked-button color="secondary" (click)="find()">Find a User</button>
+                </section>
+            </section>
+        </div>  
+    </mat-tab>
+
+
+    <mat-tab label="Add New User">
+        <div fxLayout="column" class="mat-card">
+            <form #form="ngForm" (ngSubmit)="createNewUser(form)">
+        
+                <h1 style="margin-top:50px; margin-bottom:15px;">Login Info</h1>
+
+                <div fxLayout="row" fxLayout.lt-md="column" fxFlexFill>
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>E-mail address</mat-label>
+                        <input type="email" ngModel pattern="^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$" matInput name="email" #emailInput="ngModel" required/>
+                        <mat-icon matSuffix>email</mat-icon>
+                        <mat-error *ngIf="emailInput.hasError('required')">This is a required field.</mat-error>
+                        <mat-error *ngIf="emailInput.hasError('pattern')">Incorrect e-mail address format.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row" fxLayout.lt-md="column" fxFlexFill fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+                    <mat-form-field appearance="outline" fxFlex="50">
+                        <mat-label>Password</mat-label>
+                        <input type="password" ngModel matInput name="pass1" #passwordInput="ngModel" minlength="8" required />
+                        <mat-icon matSuffix>lock</mat-icon>
+                        <mat-error *ngIf="passwordInput.hasError('required')">This is a required field.</mat-error>
+                        <mat-error *ngIf="passwordInput.hasError('minlength')">Password must contain at least 8 characters.</mat-error>
+                    </mat-form-field>
+            
+                    <mat-form-field appearance="outline" fxFlex="50">
+                        <mat-label>Repeat pasword</mat-label>
+                        <input type="password" ngModel matInput name="pass2" #passwordInputRepeat="ngModel" (ngModelChange)="checkPasswords(passwordInput, passwordInputRepeat)" required />
+                        <mat-icon matSuffix>lock</mat-icon>
+                        <mat-error *ngIf="passwordInputRepeat.hasError('required')">This is a required field.</mat-error>
+                        <mat-error *ngIf="passwordInputRepeat.hasError('notSame')">Passwords do not match.</mat-error>
+                    </mat-form-field>
+                </div>
+        
+                <h1 style="margin-top:50px; margin-bottom:15px;">Delivery Address</h1>
+
+                <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px" fxLayoutGap.lt-md="0px" fxFlexFill>
+                    <mat-form-field appearance="outline" fxFlex="50">
+                        <mat-label>First Name</mat-label>
+                        <input type="text" ngModel matInput name="firstname" #firstNameInput="ngModel" required />
+                        <mat-error *ngIf="firstNameInput.hasError('required')">This is a required field.</mat-error>
+                    </mat-form-field>
+            
+                    <mat-form-field appearance="outline" fxFlex="50">
+                        <mat-label>Last Name</mat-label>
+                        <input type="text" ngModel matInput name="lastname" #lastNameInput="ngModel" required/>
+                        <mat-error *ngIf="lastNameInput.hasError('required')">This is a required field.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row" fxLayout.lt-md="column" fxFlexFill>
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>Phone Number</mat-label>
+                        <input type="text" ngModel matInput name="phone" #phoneInput="ngModel" required/>
+                        <mat-icon matSuffix>phone</mat-icon>
+                        <mat-error *ngIf="phoneInput.hasError('required')">This is a required field.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row" fxLayout.lt-md="column" fxFlexFill fxLayoutGap="20px" fxLayoutGap.lt-md="0px">
+                    <mat-form-field appearance="outline" fxFlex="50">
+                        <mat-label>City</mat-label>
+                        <input type="city" ngModel matInput name="city" #cityInput="ngModel" required />
+                        <mat-icon matSuffix>apartment</mat-icon>
+                        <mat-error *ngIf="cityInput.hasError('required')">This is a required field.</mat-error>
+                    </mat-form-field>
+            
+                    <mat-form-field appearance="outline" fxFlex="50">
+                        <mat-label>Postcode</mat-label>
+                        <input type="text" ngModel matInput name="postcode" #postcodeInput="ngModel" required />
+                        <mat-icon matSuffix>apartment</mat-icon>
+                        <mat-error *ngIf="postcodeInput.hasError('required')">This is a required field.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="column" fxFlexFill>
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>Address</mat-label>
+                        <input type="email" ngModel matInput name="address1" #address1Input="ngModel" required/>
+                        <mat-icon matSuffix>home</mat-icon>
+                        <mat-error *ngIf="address1Input.hasError('required')">This is a required field.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row" fxLayoutGap="20px" style="padding-top:10px;">
+                    <button type="submit" mat-raised-button color="primary" fxFlex="100" [disabled]="!checkFormValidity(form)">Create User</button>
+                </div>
+
+            </form>
+        </div>
+    </mat-tab>
+</mat-tab-group>

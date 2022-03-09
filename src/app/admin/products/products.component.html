@@ -1,0 +1,147 @@
+<mat-progress-bar mode="query" *ngIf="showProgress"></mat-progress-bar>
+
+<h1 style="text-align: center; padding:15px;">Products</h1>
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Products List">
+
+        <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="2%" class="mat-card">
+            <mat-table [dataSource]="listedProducts" matSort style="width:90%;margin:auto;">
+                <ng-container matColumnDef="productTitle">
+                    <mat-header-cell *matHeaderCellDef>Product Title</mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <span *ngIf="!isEditingField">{{ element.title }}</span>
+                        <span *ngIf="isEditingField">
+                            <input type="text" matInput [(ngModel)]="element.titleEdit" placeholder="{{element.title}}" (keydown.enter)="isEditingField = false; editProduct(element)" (keydown.esc)="isEditingField=false"/>
+                        </span>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+                <ng-container matColumnDef="categoryTitle">
+                    <mat-header-cell *matHeaderCellDef>Category</mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <span>{{ productCategories.get(element.category.id) }}</span>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="stock">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Stock</mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <span *ngIf="!isEditingField">{{ element.stock === 0 ? "Out Of Stock" : element.stock }}</span>
+                        <span *ngIf="isEditingField">
+                            <input type="number" min="0" max="99999" matInput [(ngModel)]="element.stockEdit" placeholder="{{element.stock}}" (keydown.enter)="isEditingField = false; editProduct(element)" (keydown.esc)="isEditingField=false"/>
+                        </span>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="price">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <span *ngIf="!isEditingField">€{{ element.price.toFixed(2) }}</span>
+                        <span *ngIf="isEditingField">
+                            <input type="number" min="0" max="9999999999" matInput [(ngModel)]="element.priceEdit" placeholder="{{element.price}}" (keydown.enter)="isEditingField = false; editProduct(element)" (keydown.esc)="isEditingField=false"/>
+                        </span>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <button mat-icon-button *ngIf="!isEditingField" (click)="isEditingField = true"><mat-icon>edit</mat-icon></button>
+                        <button mat-icon-button *ngIf="isEditingField" (click)="isEditingField = false; editProduct(element);"><mat-icon>check_circle</mat-icon></button>
+                        <button mat-icon-button (click)="deleteProduct(element.id)"><mat-icon>delete_forever</mat-icon></button>
+                        <button mat-icon-button (click)="showProductDescription(element)"><mat-icon>info</mat-icon></button>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumnsProducts"></mat-header-row>
+                <mat-row *matRowDef="let rows; columns: displayedColumnsProducts;"></mat-row>
+            </mat-table>
+            
+            <section fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px" fxFlex>
+                <mat-paginator [pageSize]="1" [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+                <section fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+                    <button mat-flat-button color="primary" (click)="listAll()">List Products</button>
+                    <button mat-stroked-button color="secondary" (click)="findProduct()">Find a Product</button>
+                </section>
+            </section>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Create New Product">
+        <form fxLayout="column" #form="ngForm" (ngSubmit)="createNewProduct(form)">
+            <mat-form-field appearance="outline">
+                <mat-label>Product Title</mat-label>
+                <input type="text" ngModel matInput name="addProductTitle" #nameInput="ngModel" required/>
+                    <mat-error *ngIf="nameInput.hasError('required')">This is a required field.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Category</mat-label>
+                <mat-select matInput ngModel name="addProductCategory" required>
+                    <mat-option *ngFor="let category of productCategories | keyvalue"
+                        [value]="category"> {{ category.value }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Description</mat-label>
+                <textarea maxlength="1000" ngModel matInput name="addProductDesc" #descriptionInput="ngModel" required></textarea>
+                <mat-error *ngIf="descriptionInput.hasError('required')">This is a required field.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Stock</mat-label>
+                <span><input type="number" min="0" max="99999" matInput ngModel #stockInput="ngModel" name="addProductStock" required/></span>
+                <mat-error *ngIf="stockInput.hasError('required')">This is a required field.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Price (EUR)</mat-label>
+                <input type="number" min="0" max="9999999999" matInput ngModel #priceInput="ngModel" name="addProductPrice" required/>
+                <mat-error *ngIf="priceInput.hasError('required')">This is a required field.</mat-error>
+            </mat-form-field>
+            
+            <button type="submit" mat-raised-button color="primary" fxFlex="100" [disabled]="!checkRequiredFields(form)">Create Product</button> 
+        </form>
+    </mat-tab>
+
+    <mat-tab label="Category Management">
+        <div fxLayout="column" fxLayoutAlign="center center" class="mat-card">
+            <mat-table [dataSource]="categories" matSort>
+                <ng-container matColumnDef="categoryName">
+                    <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <span *ngIf="!isEditingField">{{ element.title }}</span>
+                        <span *ngIf="isEditingField">
+                            <span *ngIf="isEditingField"><input type="text" matInput [(ngModel)]="element.title" (keydown.enter)="isEditingField = false; editCategory(element)" (keydown.esc)="isEditingField=false"/></span>
+                        </span>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <button mat-icon-button *ngIf="!isEditingField" (click)="isEditingField = true"><mat-icon>edit</mat-icon></button>
+                        <button mat-icon-button *ngIf="isEditingField" (click)="isEditingField = false; editCategory(element);"><mat-icon>check_circle</mat-icon></button>
+                        <button mat-icon-button (click)="deleteCategory(element.id, element.title)"><mat-icon>delete_forever</mat-icon></button>
+                    </mat-cell>
+                    <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumnsCategories"></mat-header-row>
+                <mat-row *matRowDef="let rows; columns: displayedColumnsCategories;"></mat-row>
+                <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+            </mat-table>
+
+            <section>
+                <button mat-stroked-button color="primary" (click)="createNewCategory()" style="margin: 30px;">Create New Category</button>
+            </section>
+        </div>
+    </mat-tab>
+</mat-tab-group>

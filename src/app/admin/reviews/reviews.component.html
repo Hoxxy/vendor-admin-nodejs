@@ -1,0 +1,52 @@
+<mat-progress-bar mode="query" *ngIf="showProgress"></mat-progress-bar>
+
+<h1 style="text-align: center; padding:15px;">Reviews</h1>
+<div fxLayout="column" fxLayoutAlign="start center" class="mat-card">
+    <mat-table [dataSource]="listedReviews" matSort style="width:60%;margin:auto;">
+        <ng-container matColumnDef="displayname">
+            <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span>{{ element.displayname }}</span>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="productTitle">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span>{{ element.productname }}</span>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="review">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Rating</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                
+                <span *ngIf="!element.isEditing">{{ element.rating }}</span>
+                <span *ngIf="element.isEditing"><input type="number" min="0" max="5" matInput [(ngModel)]="element.rating"/></span>
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+        </ng-container>
+                
+        <ng-container matColumnDef="text">
+            <mat-header-cell *matHeaderCellDef>Text</mat-header-cell>
+            <mat-cell *matCellDef="let element" style="font-size:10px;">
+                {{ element.text }}
+            </mat-cell>
+            <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsReviews"></mat-header-row>
+        <mat-row *matRowDef="let rows; columns: displayedColumnsReviews;"></mat-row>
+    </mat-table>
+        
+    <section fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="6%" fxFlex>
+        <mat-paginator [pageSize]="1" [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+        <section fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+            <button mat-flat-button color="primary" (click)="listReviews()">List Reviews</button>
+            <button mat-stroked-button color="primary" (click)="filterByUser()">Filter by User</button>
+            <button mat-stroked-button color="primary" (click)="filterByProduct()">Filter by Product</button>
+        </section>
+    </section>
+</div>

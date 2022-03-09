@@ -1,0 +1,128 @@
+
+
+.product-page {
+    width: 100%;
+    padding-bottom: 10%;
+}
+.product-page-container {
+    max-width: 1140px;
+    text-align: center;
+    padding: 0 30px;
+    margin: auto;
+}
+.product-breadcrumbs {
+    padding: 30px 0;
+}
+.product-breadcrumbs li{
+    display: inline-block;
+    letter-spacing: .2em;
+    font-weight: 700;
+    margin: 0px 5px;
+    text-transform: uppercase;
+    font-size: .85em;
+}
+.product-breadcrumbs li a {
+    color: #4a4a4a;
+    text-decoration: none;
+}
+.product-breadcrumbs li:last-child{
+    opacity: 0.5;
+}
+
+.product-details-row {
+    vertical-align: middle;
+}
+
+.product-details-image {
+    max-width:300px;
+}
+
+.product-brand {
+    color: #7d7d7d;
+}
+.product-title {
+    margin:15px 0;
+    font-size:2.5em;
+    font-weight: 400;
+    font-family: "Playfair Display";
+}
+.product-price {
+    color:#9f9f9f;
+    font-family: "Playfair Display";
+    font-size:20px;
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+.product-description {
+    color: #7d7d7d;
+    margin:10px 0 30px 0;
+    text-align: justify;
+}
+.product-details-button {
+    padding:25px 0;
+    border-top: 1px solid #e4e4e4;
+    width:100%;
+    margin: 0 auto;
+}
+.product-cart-button {
+    margin-left:5px;
+    margin-top:2px;
+    text-transform: uppercase;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 1px solid #eee;
+    height: 62px;
+}
+
+.review-container {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.review-container h2 {
+    text-align: left;
+}
+
+.review {
+    border: 1px solid #e4e4e4;
+    padding: 15px;
+    margin-top: 5px;
+}
+
+.review-author {
+    font-weight: bold;
+}
+
+.review-spacer {
+    content: "\00B7";
+    padding: 0 5px;
+}
+
+.review-text p {
+    text-align: justify;
+}
+
+.no-reviews {
+    text-align: left;
+}
+
+.no-reviews-btn {
+    width: 120px;
+    height:40px;
+}
+
+.review star-rating {
+    margin-left: auto;
+}
+
+.review-container-header star-rating {
+    margin: 5px 0px 0px 10px;
+}
+
+.review-write {
+    margin-left: auto;
+}
+
+.review-write-btn {
+    margin-left: auto;
+}

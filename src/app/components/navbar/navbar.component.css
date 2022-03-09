@@ -1,0 +1,35 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+.toolbar-container {
+    /* background-color: rgb(228, 226, 218); */
+    border-bottom: 1px solid #eee;
+}
+
+mat-toolbar {
+    width: 63%;
+    height: 70px;
+    margin: auto;
+    /* background-color: rgb(228, 226, 218); */
+    background-color: transparent;
+}
+
+@media screen and (max-width: 992px) {
+    mat-toolbar {
+        width: 100%;
+        margin: 0%;
+    }
+}
+
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+    border: solid 1px #eee;
+  }
